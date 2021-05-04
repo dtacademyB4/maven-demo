@@ -11,7 +11,12 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import utils.ConfigReader;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class Search {
@@ -44,6 +49,26 @@ public class Search {
 
 
     }
+
+
+    @Test
+    public void testUtilityMethod() throws IOException {
+
+
+        System.out.println(ConfigReader.getProp("url"));
+        System.out.println(ConfigReader.getProp("username"));
+        System.out.println(ConfigReader.getProp("password"));
+        System.out.println(ConfigReader.getProp("browserr"));
+
+
+
+
+    }
+
+
+
+
+
 
 
     @AfterMethod

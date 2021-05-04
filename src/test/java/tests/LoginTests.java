@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import static org.testng.Assert.*;
 
 import org.testng.annotations.*;
+import utils.ConfigReader;
 
 import java.util.concurrent.TimeUnit;
 
@@ -26,7 +27,7 @@ public class LoginTests {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        driver.get("http://secure.smartbearsoftware.com/samples/TestComplete12/WebOrders/Login.aspx");
+        driver.get(ConfigReader.getProp("url"));
     }
 
 
@@ -35,8 +36,8 @@ public class LoginTests {
     public void positiveLogin(){
 
         // Enter the correct credentials
-        driver.findElement(By.id("ctl00_MainContent_username")).sendKeys("Tester");
-        driver.findElement(By.id("ctl00_MainContent_password")).sendKeys("test");
+        driver.findElement(By.id("ctl00_MainContent_username")).sendKeys(ConfigReader.getProp("username"));
+        driver.findElement(By.id("ctl00_MainContent_password")).sendKeys(ConfigReader.getProp("password"));
         driver.findElement(By.id("ctl00_MainContent_login_button")).click();
 
         // Verify that the login was successful
